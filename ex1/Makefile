@@ -1,8 +1,8 @@
 # program executable name
-TARGET = taska
+TARGET = build/taska
 
 # compiler flags
-CFLAGS = -g -Wall -std=gnu11 -I../common
+CFLAGS = -g -std=gnu11 -I../common
 
 # linker flags
 LDFLAGS = -g

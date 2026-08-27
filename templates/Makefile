@@ -1,5 +1,5 @@
 # program executable name
-TARGET = sort_args
+TARGET = build/exe#NAME
 
 # compiler flags
 CFLAGS = -g -Wall

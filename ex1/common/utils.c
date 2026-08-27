@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <sys/times.h>
 #include <time.h>
 
 struct timespec timespec_normalized(time_t sec, long nsec){
@@ -27,4 +28,14 @@ int timespec_cmp(struct timespec lhs, struct timespec rhs){
     if (lhs.tv_sec > rhs.tv_sec)
         return 1;
     return lhs.tv_nsec - rhs.tv_nsec;
+}
+
+struct timespec ticks_to_timespec(clock_t ticks) {
+    long ticks_per_sec = sysconf(_SC_CLK_TCK);
+    struct timespec ts;
+
+    ts.tv_sec  = ticks / ticks_per_sec;
+    ts.tv_nsec = (ticks % ticks_per_sec) * (1000000000L / ticks_per_sec);
+
+    return ts;
 }
