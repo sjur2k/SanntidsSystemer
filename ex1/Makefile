@@ -1,29 +1,30 @@
-# program executable name
-TARGET = build/taska
-
-# compiler flags
-CFLAGS = -g -std=gnu11 -I../common
-
-# linker flags
+CC = gcc
+CFLAGS = -g -Wall -std=gnu11 -I.
 LDFLAGS = -g
 
-# list of sources
-SOURCES = $(shell find -name "*.c")
+BUILD = build
 
-# default rule, to compile everything
-all: $(TARGET)
+# one executable per top-level .c file
+MAINS = $(wildcard *.c)
+TARGETS = $(addprefix $(BUILD)/,$(MAINS:.c=))
 
-# define object files
-OBJECTS = $(SOURCES:.c=.o)
+# shared sources linked into every executable
+COMMON_SOURCES = $(wildcard common/*.c)
+COMMON_OBJECTS = $(COMMON_SOURCES:.c=.o)
 
-# link programs
-$(TARGET): $(OBJECTS)
-	@gcc $(LDFLAGS) -o $@ $^
+.PHONY: all clean
 
-# compile
-%.o : %.c
-	@gcc $(CFLAGS) -c -o $@ $<
+all: $(TARGETS)
 
-# cleaning
+$(BUILD)/%: %.c $(COMMON_OBJECTS) | $(BUILD)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(COMMON_OBJECTS)
+
+$(BUILD):
+	mkdir -p $(BUILD)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+	rm -f $(COMMON_OBJECTS)
+	rm -rf $(BUILD)

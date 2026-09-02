@@ -17,19 +17,15 @@ void busy_wait(struct timespec t){
 
 void busy_wait_times(struct timespec t){
     struct tms now;
-    long tickrate = sysconf(_SC_CLK_TCK);
     struct timespec now_spec = ticks_to_timespec(times(&now));
-    printf("%f\n", (double)(now_spec.tv_sec);
-    struct timespec onesec = {1,0};
-    struct timespec then_spec = timespec_add(now_spec, onesec);
+    struct timespec then_spec = timespec_add(now_spec, (struct timespec){1,0});
     while(timespec_cmp(ticks_to_timespec(times(&now)),then_spec)<0){
         for(int i = 0; i < 10000; i++){}
     }
 }
 
-int main(){
+int main(int argc, char* argv[]){
     const struct timespec t0 = {1,0};
-    const struct timespec t1 = {10,1};
-    busy_wait_times(t0);
+    argc == 1 ? busy_wait(t0) : busy_wait_times(t0);
     return 0;
 }
