@@ -20,7 +20,7 @@ void busy_wait_times(struct timespec t){
     struct timespec now_spec = ticks_to_timespec(times(&now));
     struct timespec then_spec = timespec_add(now_spec, (struct timespec){1,0});
     while(timespec_cmp(ticks_to_timespec(times(&now)),then_spec)<0){
-        for(int i = 0; i < 10000; i++){}
+        //for(int i = 0; i < 10000; i++){}
     }
 }
 
