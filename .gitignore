@@ -3,5 +3,6 @@
 *.exe
 *.app
 .vscode/
+.venv
 .DS_Store
 build/

@@ -4,16 +4,21 @@ CC = clang
 CFLAGS = -std=gnu11
 LDFLAGS = -lpthread
 
+BUILD = build
+
 SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(BUILD)/,$(SRCS:.c=.o))
 
-all: $(TARGET)
+all: $(BUILD)/$(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
+$(BUILD)/$(TARGET): $(OBJS) | $(BUILD)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 
-%.o: %.c
+$(BUILD)/%.o: %.c | $(BUILD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(BUILD):
+	mkdir -p $(BUILD)
+
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -rf $(BUILD)

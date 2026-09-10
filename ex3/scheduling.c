@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Read tasks from the file
-	struct Task **tasks = read_tasks_from_file("tasks.txt", &taskCount);
+	struct Task **tasks = read_tasks_from_file("../tasks.txt", &taskCount);
 
 	// Create task threads
 	pthread_t threads[taskCount];

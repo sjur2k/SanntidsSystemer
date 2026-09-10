@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdarg.h>
 #include "scheduling.h"
 
 static pthread_mutex_t printf_mutex = PTHREAD_MUTEX_INITIALIZER;
