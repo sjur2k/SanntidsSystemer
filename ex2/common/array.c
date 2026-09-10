@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "array.h"
 
@@ -89,13 +90,29 @@ long array_length(Array a)
 }
 
 void array_reserve(Array *a, long capacity)
-{
-    // TODO: your code here
+{  
+    long* tmp = realloc(a->data, capacity * sizeof(long));
+    if(tmp == NULL) {
+        printf("Couldnt reallocate array\n");
+        exit(1);
+    }
+    a->data = tmp;
+    a->capacity = capacity;
 }
 
 // Modifiers
 void array_insertBack(Array *a, long stuff)
 {
+    if (a->back >= a->capacity){
+        long new_cap;
+        if (a->capacity < 2){
+            new_cap = 2;
+        } else {
+            new_cap = a->capacity * 1.5;
+        }
+        printf("New size: %ld!\n", new_cap);
+        array_reserve(a, new_cap);
+    }
     a->data[a->back] = stuff;
     a->back++;
 }

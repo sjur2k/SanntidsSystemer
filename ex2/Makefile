@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -g -Wall -std=gnu11 -I. -fsanitize=address
-LDFLAGS = -g -fsanitize=address
+CFLAGS = -g -Wall -std=gnu11 -I. #-fsanitize=address
+LDFLAGS = -g #-fsanitize=address
 
 BUILD = build
 
