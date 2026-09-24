@@ -1,0 +1,1 @@
+#### The problem was a data race on ```global_var```
