@@ -1,0 +1,15 @@
+Task B:
+With the vTaskDelay(0) that sends the current task to the back of the queue, we see a drastic dropoff in the worst execution times.
+
+Task C:
+The scheduler gives each task 1ms, so task C takes ~3*3 = 9ms to finish.
+Changing priorities doesnt help because of starvation.
+
+Task D:
+Here, we increase the wait to 1ms so that the tasks are blocked when they dont have anything to do.
+This way, the expensive C task gets nearly all of the CPU time to do its work when A and B don't have work.
+Now, task C gets much closer to the expected 3ms, at a small cost of A and B speed.
+
+Task E:
+With the increased priority for A and B, they never get stuck behind C like in the previous task.
+Thus, their worst case time is around 1ms. Worst case time for C is still around 4-5 ms like in the previous task.
