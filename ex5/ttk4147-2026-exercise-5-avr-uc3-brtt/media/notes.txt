@@ -1,0 +1,17 @@
+Pin A has the same max in both task A and B. Pin B and C were not tested in task A so they cannot be compared to task A.
+
+Within task B, Pin B was the worst with 51us, then Pin C with 44us, then Pin A with 41us.
+
+TASK C:
+The interrupt version has a bit worse average time and a marginally better maximum time.
+The interrupt version does not waste resources like the busy wait polling version does, and it is also more predictable, 
+since every interrupt is "equal".
+For the polling version, execution time depends on where in the loop we are. If we have just checked pin A,
+there will be some delta T before we can check and toggle pin A again. If pin A (input) is then set low, the response time will suffer.
+
+TASK D:
+The deferred version is slower in both cases (cheap vs expensive B).
+This is due to the combination of input overhead and polling delay.
+
+TASK E:
+I suppose we could defer only the expensive task and keep the immediate handling for pin A and C.

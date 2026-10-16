@@ -1,0 +1,3 @@
+[submodule "brtt-documentation"]
+	path = brtt-documentation
+	url = https://github.com/TTK4147/brtt-documentation.git

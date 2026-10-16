@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "AVR32 FreeRTOS Template", "AVR32 FreeRTOS Template_6_2.cproj", "{C02E2DB0-876A-11E0-BB03-000C2967FA5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C02E2DB0-876A-11E0-BB03-000C2967FA5F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C02E2DB0-876A-11E0-BB03-000C2967FA5F}.Debug|AVR.Build.0 = Debug|AVR
+		{C02E2DB0-876A-11E0-BB03-000C2967FA5F}.Release|AVR.ActiveCfg = Release|AVR
+		{C02E2DB0-876A-11E0-BB03-000C2967FA5F}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
